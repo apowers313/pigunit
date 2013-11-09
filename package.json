@@ -1,0 +1,22 @@
+{
+        "author" : "Adam Powers <apowers@ato.ms>",
+        "name" : "pigunit",
+        "description" : "Unit testing for Pig (and an easy way to try out Hadoop)",
+        "version" : "0.0.1",
+        "repository" : {
+                "type" : "git",
+                "url" : "https://github"
+        },
+        "keywords" : [
+                "hadoop",
+                "pig",
+                "unit-testing",
+                "test",
+                "map-reduce"
+        ],
+        "dependencies" : {
+                "mocha" : "~1.13.0",
+                "java" : "~0.2.7",
+                "handlebars" : "~1.1.2"
+        }
+}

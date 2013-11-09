@@ -1,0 +1,23 @@
+module.exports = [{
+    testDesc: "ensure that only the two highest frequencies are reported",
+    script: "top_queries.pig",
+    args: "n=2",
+    inputAlias: "data",
+    input: [
+        "yahoo",
+        "yahoo",
+        "yahoo",
+        "twitter",
+        "facebook",
+        "facebook",
+        "linkedin"
+    ],
+    outputAlias: "queries_limit",
+    output: [
+        "(yahoo,3)",
+        "(facebook,2)"
+    ],
+    options: {
+        timeout: 60000
+    }
+}];
