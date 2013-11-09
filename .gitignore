@@ -1,0 +1,4 @@
+.git
+.DS_Store
+node_modules/
+pig-0.12.0-src/
