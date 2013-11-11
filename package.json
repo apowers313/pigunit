@@ -3,9 +3,9 @@
         "name" : "pigunit",
         "description" : "Unit testing for Pig (and an easy way to try out Hadoop)",
         "version" : "0.0.1",
-        "main" : "./lib/mocha-pigrunner.js",
+        "main" : "./bin/mocha-pigrunner.js",
         "bin" : {
-                "pigunit" : "./lib/mocha-pigrunner.js"
+                "pigunit" : "./bin/mocha-pigrunner.js"
         },
         "repository" : {
                 "type" : "git",

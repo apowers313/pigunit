@@ -1,1 +1,1 @@
-module.exports = require("./lib/mocha-pigrunner.js");
+module.exports = require("./bin/mocha-pigrunner.js");
