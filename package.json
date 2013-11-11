@@ -2,7 +2,7 @@
         "author" : "Adam Powers <apowers@ato.ms>",
         "name" : "pigunit",
         "description" : "Unit testing for Pig (and an easy way to try out Hadoop)",
-        "version" : "0.0.1",
+        "version" : "0.0.2",
         "main" : "./bin/mocha-pigrunner.js",
         "bin" : {
                 "pigunit" : "./bin/mocha-pigrunner.js"
