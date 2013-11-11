@@ -22,7 +22,9 @@
         "dependencies" : {
                 "mocha" : "~1.13.0",
                 "java" : "~0.2.7",
-                "handlebars" : "~1.1.2"
+                "handlebars" : "~1.1.2",
+                "tracer" : "~0.6.1",
+                "colors" : "~0.6.2"
         },
         "license" : "MIT"
 }
