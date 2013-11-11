@@ -3,7 +3,9 @@
 var path = require('path');
 var fs = require('fs');
 var handlebars = require('handlebars');
+var pkg = require('../package.json');
 var program = require('commander')
+    .version(pkg.version)
     .option('-t, --testdir <dir>', 'The directory where the .pu unit tests are held. If not specified, ./test will be assumed.')
     .option('-s, --scriptdir <dir>', 'The directory where the pig scripts are held. If not specified the current directory will be assumed.')
     .option('-R, --reporter <name>', 'specify the reporter to use', 'list')
