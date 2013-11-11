@@ -4,6 +4,9 @@
         "description" : "Unit testing for Pig (and an easy way to try out Hadoop)",
         "version" : "0.0.1",
         "main" : "./lib/mocha-pigrunner.js",
+        "bin" : {
+                "pigunit" : "./lib/mocha-pigrunner.js"
+        },
         "repository" : {
                 "type" : "git",
                 "url" : "https://github.com/adam-powers/pigunit.git"
@@ -24,7 +27,8 @@
                 "java" : "~0.2.7",
                 "handlebars" : "~1.1.2",
                 "tracer" : "~0.6.1",
-                "colors" : "~0.6.2"
+                "colors" : "~0.6.2",
+                "commander" : "~2.0.0"
         },
         "license" : "MIT"
 }
