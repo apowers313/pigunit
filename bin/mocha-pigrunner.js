@@ -25,14 +25,14 @@ logger = require('tracer').colorConsole({
 });
 
 // setup and check default values
-program.testdir = path.resolve (program.testdir || "./test");
-program.scriptdir = path.resolve (program.scriptdir || ".");
-var mochaOpts = path.resolve (program.testdir, "mocha.opts");
-if (fs.existsSync (mochaOpts)) {
+program.testdir = path.resolve(program.testdir || "./test");
+program.scriptdir = path.resolve(program.scriptdir || ".");
+var mochaOpts = path.resolve(program.testdir, "mocha.opts");
+if (fs.existsSync(mochaOpts)) {
     program.mochaopts = mochaOpts;
 } else {
-    mochaOpts = path.resolve ("./mocha.opts");
-    if (fs.existsSync (mochaOpts)) {
+    mochaOpts = path.resolve("./mocha.opts");
+    if (fs.existsSync(mochaOpts)) {
         program.mochaopts = mochaOpts;
     } else {
         program.mochaopts = null;
@@ -43,40 +43,40 @@ program.moduledir = path.resolve(program.bindir, "..");
 program.nodelibs = path.resolve(program.moduledir, "node_modules");
 program.supportdir = path.resolve(program.bindir, "../support");
 program.testtemplate = path.resolve(program.supportdir, "pigunit-template.js");
-logger.debug ("Reporter: %s", program.reporter);
-logger.debug ("Test Dir: %s", program.testdir);
-logger.debug ("Script Dir: %s", program.scriptdir);
-logger.debug ("Mocha Opts File: %s", program.mochaopts);
-logger.debug ("Module Dir: %s", program.bindir);
-logger.debug ("Support Dir: %s", program.supportdir);
-logger.debug ("Unit Test Template: %s", program.testtemplate);
+logger.debug("Reporter: %s", program.reporter);
+logger.debug("Test Dir: %s", program.testdir);
+logger.debug("Script Dir: %s", program.scriptdir);
+logger.debug("Mocha Opts File: %s", program.mochaopts);
+logger.debug("Module Dir: %s", program.bindir);
+logger.debug("Support Dir: %s", program.supportdir);
+logger.debug("Unit Test Template: %s", program.testtemplate);
 
-var testDirStats = fs.statSync (program.testdir);
-if (!testDirStats.isDirectory()){
-    logger.error ("%s must be a directory", program.testdir);
+var testDirStats = fs.statSync(program.testdir);
+if (!testDirStats.isDirectory()) {
+    logger.error("%s must be a directory", program.testdir);
     process.exit(-1);
 }
 
-var scriptDirStats = fs.statSync (program.scriptdir);
-if (!scriptDirStats.isDirectory()){
-    logger.error ("%s must be a directory", program.scriptdir);
+var scriptDirStats = fs.statSync(program.scriptdir);
+if (!scriptDirStats.isDirectory()) {
+    logger.error("%s must be a directory", program.scriptdir);
     process.exit(-1);
 }
 
 // get file list from command line
 var fileList = [];
-var testDirList = fs.readdirSync (program.testdir);
+var testDirList = fs.readdirSync(program.testdir);
 for (var i = 0; i < testDirList.length; i++) {
     // make sure the file has a .pu extension
-    if (!testDirList[i].match (/.pu$/)) continue;
+    if (!testDirList[i].match(/.pu$/)) continue;
     // add file .pu file to file list
-    fileList.push (path.resolve(program.testdir, testDirList[i]));
+    fileList.push(path.resolve(program.testdir, testDirList[i]));
 }
-logger.debug (fileList);
+logger.debug(fileList);
 
 // read in mocha.opts, same as _mocha script
 /* TODO: all the commmander logic is embedded in the mocha file, but so is the logic to add files
- * this leaves us the unslightly option of either copying all of _mocha to change one line or 
+ * this leaves us the unslightly option of either copying all of _mocha to change one line or
  * finding some hack. Let's worry about that later and people can suffer without all the mocha
  * options for now.
  * */
@@ -109,7 +109,7 @@ handlebars.registerHelper("strArray", function(items, options) {
 
     for (var i = 0; i < items.length; i++) {
         buf = buf + "\"" + items[i] + "\"";
-        if (!(i === items.length - 1)) buf = buf + ", ";
+        if (i !== (items.length - 1)) buf = buf + ", ";
     }
 
     return buf;
@@ -123,9 +123,11 @@ hTemplate = handlebars.compile(fs.readFileSync(program.testtemplate, {
 for (var i = 0; i < fileList.length; i++) {
     var file = fileList[i];
     logger.log("reading file %s", file);
-    templateData = require(file);
+    templateData = JSON.parse(fs.readFileSync(file, {
+        encoding: 'utf8'
+    }));
     //templateData.moduleDir = path.resolve("..");
-    templateData.script = path.resolve(program.scriptdir,templateData.script);
+    templateData.script = path.resolve(program.scriptdir, templateData.script);
     // TODO: verify data, esp. options & timeout option
     logger.log("template data is:");
     logger.log(templateData);

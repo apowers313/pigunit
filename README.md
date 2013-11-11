@@ -29,16 +29,16 @@ The `-s` or `--scriptdir` option can be used to point to where the Pig scripts l
 Finally, the `-R` or `--reporter` option can be used to specify the Mocha reporter. If this option isn't specified, the "list" reporter is used (note that this is different than Mocha, which defaults to the "dot" reporter).
 
 ## PigUnit Files
-A sample PigUnit (.pu) file is included in the test directory of the pigunit module. It mirrors the format of the Java program describe in the [PigUnit Homepage](http://pig.apache.org/docs/r0.8.1/pigunit.html).
+A PigUnit file is a JSON file that describes the parameters for the unit test. A sample PigUnit (.pu) file is included in the test directory of the pigunit module. It mirrors the format of the Java program describe in the [PigUnit Homepage](http://pig.apache.org/docs/r0.8.1/pigunit.html).
 
 Here's an example of PigUnit file:
 
-    module.exports = {
-        testDesc: "ensure that only the two highest frequencies are reported",
-        script: "top_queries.pig",
-        args: ["n=2"],
-        inputAlias: "data",
-        input: [
+    {
+        "testDesc": "ensure that only the two highest frequencies are reported",
+        "script": "top_queries.pig",
+        "args": ["n=2"],
+        "inputAlias": "data",
+        "input": [
             "yahoo",
             "yahoo",
             "yahoo",
@@ -47,16 +47,15 @@ Here's an example of PigUnit file:
             "facebook",
             "linkedin"
         ],
-        outputAlias: "queries_limit",
-        output: [
+        "outputAlias": "queries_limit",
+        "output": [
             "(yahoo,3)",
             "(facebook,2)"
         ],
-        options: {
-            timeout: 60000
+        "options": {
+            "timeout": 60000
         }
-    };
-
+    }
 
 The properties in the PigUnit file are:
 
