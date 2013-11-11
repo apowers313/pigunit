@@ -16,7 +16,7 @@ You must also have Pig and PigUnit installed. I would recommend downloading the 
 
 (As a side note, you can also download pig.jar and pigunit.jar from the [Pig Maven Repository](http://mvnrepository.com/artifact/org.apache.pig); however, I personally had problems with missing dependencies, such as log4j.)
 
-Now make sure that your JAVA_HOME environment variable points towards your Java installation and your PIG_HOME environment variable points toward pig.jar and pigunit.jar.
+Now make sure that your JAVA_HOME environment variable points towards your Java installation and your PIG_HOME environment variable points toward the directory containing pig.jar and pigunit.jar.
 
 ## Running
 
