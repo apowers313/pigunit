@@ -9,11 +9,17 @@ var program = require('commander')
     .option('-t, --testdir <dir>', 'The directory where the .pu unit tests are held. If not specified, ./test will be assumed.')
     .option('-s, --scriptdir <dir>', 'The directory where the pig scripts are held. If not specified the current directory will be assumed.')
     .option('-R, --reporter <name>', 'specify the reporter to use', 'list')
+    .option('-d, --debug', 'Turn on (very very verbose) debug messages')
+    .option('-v, --verbose', 'Turn on verbose mode')
     .parse(process.argv);
+
+var loglevel = "info";
+if (program.verbose) loglevel = "debug";
+if (program.debug) loglevel = "log";
 
 colors = require('colors');
 logger = require('tracer').colorConsole({
-    level: "log",
+    level: loglevel,
     dateformat: "HH:MM:ss",
     format: "[[{{timestamp}}] {{file}}::{{line}} <{{title}}>] {{message}}",
     showHidden: true,
