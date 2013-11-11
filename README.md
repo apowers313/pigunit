@@ -31,6 +31,33 @@ Finally, the `-R` or `--reporter` option can be used to specify the Mocha report
 ## PigUnit Files
 A sample PigUnit (.pu) file is included in the test directory of the pigunit module. It mirrors the format of the Java program describe in the [PigUnit Homepage](http://pig.apache.org/docs/r0.8.1/pigunit.html).
 
+Here's an example of PigUnit file:
+
+    module.exports = {
+        testDesc: "ensure that only the two highest frequencies are reported",
+        script: "top_queries.pig",
+        args: ["n=2"],
+        inputAlias: "data",
+        input: [
+            "yahoo",
+            "yahoo",
+            "yahoo",
+            "twitter",
+            "facebook",
+            "facebook",
+            "linkedin"
+        ],
+        outputAlias: "queries_limit",
+        output: [
+            "(yahoo,3)",
+            "(facebook,2)"
+        ],
+        options: {
+            timeout: 60000
+        }
+    };
+
+
 The properties in the PigUnit file are:
 
 * *testDesc* : An arbitrary string that you think describes the test best. When the test passes or fails, this string will show up next to it.
