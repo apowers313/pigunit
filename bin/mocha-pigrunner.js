@@ -140,8 +140,6 @@ for (var i = 0; i < fileList.length; i++) {
     mocha.addFile(pigTestJsFile);
 }
 
-process.exit(0);
-
 // run mocha
 mocha.reporter(program.reporter).run(function(failures) {
     process.on('exit', function() {
