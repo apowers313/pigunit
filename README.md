@@ -9,7 +9,7 @@ This module uses node.js and Mocha as a unit testing framework for [Pig](http://
 ## Installation
 
 First install this module:
-`npm install -g pigunit`
+`npm install -g --user 0 pigunit`
 
 You must also have Pig and PigUnit installed. I would recommend downloading the source and compiling it yourself. You can find your [local Apache mirror for Pig here](http://www.apache.org/dyn/closer.cgi/pig). This has been tested against Pig 0.12.0, but the API for PigUnit is so simple that I don't expect there to be any version dependencies. After you download, untar and change to the source directory build both Pig and PigUnit:
 `ant && ant pigunit-jar`
