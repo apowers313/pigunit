@@ -61,12 +61,20 @@ logger.debug("Module Dir: %s", program.bindir);
 logger.debug("Support Dir: %s", program.supportdir);
 logger.debug("Unit Test Template: %s", program.testtemplate);
 
+if (!fs.existsSync(program.testdir)) {
+    logger.error ("Test directory %s doesn't exist", program.testdir);
+    process.exit(-1);
+}
 var testDirStats = fs.statSync(program.testdir);
 if (!testDirStats.isDirectory()) {
     logger.error("%s must be a directory", program.testdir);
     process.exit(-1);
 }
 
+if (!fs.existsSync(program.scriptdir)) {
+    logger.error ("Script directory %s doesn't exist", program.scriptdir);
+    process.exit(-1);
+}
 var scriptDirStats = fs.statSync(program.scriptdir);
 if (!scriptDirStats.isDirectory()) {
     logger.error("%s must be a directory", program.scriptdir);
