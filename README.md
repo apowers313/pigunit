@@ -59,14 +59,14 @@ Here's an example of PigUnit file:
 
 The properties in the PigUnit file are:
 
-* *testDesc* : An arbitrary string that you think describes the test best. When the test passes or fails, this string will show up next to it.
-* *script* : The Pig script that is being tested. May include a relative path from the scriptdir specified on the commandline.
-* *args* : An array of arguments to pass the Pig script.
-* *inputAlias* : The Pig variable in the `script` that is used for input.
-* *input* : The strings to assign to the variable specified by `inputAlias`.
-* *outputAlias* : The Pig variable in the `script` that is used for output.
-* *output* : The strings that are expected to be in the `outputAlias` variable upon the completion of the test.
-* *options.timeout* : The time expected for the test to complete, in milliseconds. Even the simplest of tests seems to take ~30 seconds, so make sure that this is 30000 or higher. The Mocha default is 2 seconds, after which the test will fail.
+* **testDesc** : An arbitrary string that you think describes the test best. When the test passes or fails, this string will show up next to it.
+* **script** : The Pig script that is being tested. May include a relative path from the scriptdir specified on the commandline.
+* **args** : An array of arguments to pass the Pig script.
+* **inputAlias** : The Pig variable in the `script` that is used for input.
+* **input** : The strings to assign to the variable specified by `inputAlias`.
+* **outputAlias** : The Pig variable in the `script` that is used for output.
+* **output** : The strings that are expected to be in the `outputAlias` variable upon the completion of the test.
+* **options.timeout** : The time expected for the test to complete, in milliseconds. Even the simplest of tests seems to take ~30 seconds, so make sure that this is 30000 or higher. The Mocha default is 2 seconds, after which the test will fail.
 
 Note that PigUnit files aren't currently validated, so any errors are going to probably trigger an exception somewhere.
 
