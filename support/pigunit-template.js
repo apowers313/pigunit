@@ -2,7 +2,7 @@
 /* TODO: don't overwrite previous _JAVA_OPTIONS */
 require.paths = "{{moduleDir}}/node_modules";
 
-process.env['_JAVA_OPTIONS'] = "-Xmx6144m";
+process.env['_JAVA_OPTIONS'] = "-Xmx6144m -Dfile.encoding=UTF-8";
 var pigHome = process.env.PIG_HOME;
 var assert = require('assert');
 assert.notStrictEqual (pigHome, undefined, "PIG_HOME environment variable does not seem to be set. It must point to your installation of Apache Pig.");
